@@ -1,15 +1,22 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { forwardRef, useRef, useMemo, useLayoutEffect } from 'react';
-import { Color } from 'three';
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import {
+  forwardRef,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { Color } from "three";
 
-const hexToNormalizedRGB = hex => {
-  hex = hex.replace('#', '');
+const hexToNormalizedRGB = (hex) => {
+  hex = hex.replace("#", "");
   return [
     parseInt(hex.slice(0, 2), 16) / 255,
     parseInt(hex.slice(2, 4), 16) / 255,
-    parseInt(hex.slice(4, 6), 16) / 255
+    parseInt(hex.slice(4, 6), 16) / 255,
   ];
 };
 
@@ -80,20 +87,47 @@ const SilkPlane = forwardRef(function SilkPlane({ uniforms }, ref) {
   }, [ref, viewport]);
 
   useFrame((_, delta) => {
-    ref.current.material.uniforms.uTime.value += 0.1 * delta;
+    if (ref.current) {
+      ref.current.material.uniforms.uTime.value += 0.1 * delta;
+    }
   });
 
   return (
     <mesh ref={ref}>
       <planeGeometry args={[1, 1, 1, 1]} />
-      <shaderMaterial uniforms={uniforms} vertexShader={vertexShader} fragmentShader={fragmentShader} />
+      <shaderMaterial
+        uniforms={uniforms}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+      />
     </mesh>
   );
 });
-SilkPlane.displayName = 'SilkPlane';
+SilkPlane.displayName = "SilkPlane";
 
-const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0 }) => {
+const Silk = ({
+  speed = 5,
+  scale = 1,
+  color = "#7B7481",
+  noiseIntensity = 1.5,
+  rotation = 0,
+}) => {
   const meshRef = useRef();
+  const [canAnimate, setCanAnimate] = useState(true);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setCanAnimate(!media.matches && !document.hidden);
+
+    update();
+    media.addEventListener("change", update);
+    document.addEventListener("visibilitychange", update);
+
+    return () => {
+      media.removeEventListener("change", update);
+      document.removeEventListener("visibilitychange", update);
+    };
+  }, []);
 
   const uniforms = useMemo(
     () => ({
@@ -102,13 +136,22 @@ const Silk = ({ speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, r
       uNoiseIntensity: { value: noiseIntensity },
       uColor: { value: new Color(...hexToNormalizedRGB(color)) },
       uRotation: { value: rotation },
-      uTime: { value: 0 }
+      uTime: { value: 0 },
     }),
     [speed, scale, noiseIntensity, color, rotation]
   );
 
+  if (!canAnimate) {
+    return null;
+  }
+
   return (
-    <Canvas dpr={[1, 2]} frameloop="always">
+    <Canvas
+      aria-hidden="true"
+      dpr={[1, 1.5]}
+      frameloop="always"
+      gl={{ antialias: false, powerPreference: "high-performance" }}
+    >
       <SilkPlane ref={meshRef} uniforms={uniforms} />
     </Canvas>
   );
