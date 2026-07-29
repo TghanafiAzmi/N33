@@ -11,8 +11,91 @@ export const serviceNavigation = [
   },
 ] as const;
 
-export const workNavigation = [
-  { href: "/work/placeholder", label: "Case Study Template" },
+export const projects = [
+  {
+    number: "01",
+    slug: "merchant-dashboard",
+    name: "Merchant Dashboard",
+    client: "Confidential E-commerce Company",
+    industry: "E-commerce",
+    services: "UI/UX Design, Web Development, Dashboard Design, Frontend Development",
+    summary:
+      "A modern merchant management platform that centralizes inventory, orders, analytics, and customer insights into one dashboard.",
+    challenge:
+      "The client relied on multiple disconnected systems, slowing operations.",
+    solution:
+      "N33 designed and built a responsive dashboard with analytics, inventory, and order management.",
+    outcomes: [
+      "Reduced admin workflow by ~35%",
+      "Improved usability",
+      "Faster order processing",
+    ],
+    image: "/images/projects/merchant-dashboard.jpg",
+  },
+  {
+    number: "02",
+    slug: "healthcare-booking",
+    name: "Healthcare Appointment System",
+    client: "Private Medical Clinic",
+    industry: "Healthcare",
+    services: "UI/UX Design, Booking System, Website Development",
+    summary: "Online appointment booking with reminders and patient management.",
+    challenge: "Manual phone scheduling created conflicts.",
+    solution: "Developed an automated booking platform with admin dashboard.",
+    outcomes: [
+      "Reduced scheduling conflicts",
+      "Faster booking",
+      "Better patient experience",
+    ],
+    image: "/images/projects/healthcare-booking.jpg",
+  },
+  {
+    number: "03",
+    slug: "fleet-management",
+    name: "Logistics Fleet Portal",
+    client: "Regional Logistics Company",
+    industry: "Logistics",
+    services: "Web Application, Dashboard, UI Design",
+    summary: "Fleet management portal with delivery tracking and reporting.",
+    challenge: "Poor operational visibility.",
+    solution: "Built a real-time fleet monitoring dashboard.",
+    outcomes: [
+      "Better operational visibility",
+      "Faster dispatch",
+      "Reduced reporting time",
+    ],
+    image: "/images/projects/fleet-management.jpg",
+  },
+  {
+    number: "04",
+    slug: "corporate-redesign",
+    name: "Corporate Website Redesign",
+    client: "Technology Solutions Provider",
+    industry: "Technology",
+    services: "Branding, Website Design, Development",
+    summary: "Modern corporate website focused on lead generation.",
+    challenge: "Outdated website with low conversion.",
+    solution: "Complete redesign with SEO and performance optimization.",
+    outcomes: [
+      "Higher engagement",
+      "Faster load speed",
+      "More enquiries",
+    ],
+    image: "/images/projects/corporate-redesign.jpg",
+  },
+] as const;
+
+export const workNavigation = projects.map((p) => ({
+  href: `/work/${p.slug}`,
+  label: p.name,
+}));
+
+export const socialLinks = [
+  { label: "LinkedIn", href: "https://linkedin.com/company/n33studio" },
+  { label: "GitHub", href: "https://github.com/n33studio" },
+  { label: "Twitter/X", href: "https://x.com/n33studio" },
+  { label: "Instagram", href: "https://instagram.com/n33studio" },
+  { label: "Facebook", href: "https://facebook.com/n33studio" },
 ] as const;
 
 export const navigation = [
@@ -58,7 +141,7 @@ export const globalCta = {
 export const servicesPage = {
   title: "Digital Services Built Around Real Business Needs.",
   introduction: [
-    "N33 designs and develops digital experiences that help businesses communicate clearly, operate efficiently and grow with confidence.",
+    "N33 Studio designs and develops digital experiences that help businesses communicate clearly, operate efficiently and grow with confidence.",
     "We can support a focused project or work across strategy, design, development and ongoing improvement.",
   ],
   services: [
@@ -148,7 +231,7 @@ export const webDesignPage = {
   title: "Websites Designed to Make a Clearer Impression.",
   introduction: [
     "A strong website should explain your business quickly, guide visitors naturally and perform reliably on every screen.",
-    "N33 combines strategy, interface design and frontend development to create websites that look considered and work with purpose.",
+    "N33 Studio combines strategy, interface design and frontend development to create websites that look considered and work with purpose.",
   ],
   listTitle: "What We Build",
   capabilities: [
@@ -185,7 +268,7 @@ export const customSoftwarePage = {
   title: "Software Built Around the Way Your Business Works.",
   introduction: [
     "Off-the-shelf tools are useful until your processes become too specific, fragmented or difficult to manage.",
-    "N33 develops custom systems that bring important workflows, information and teams into a clearer digital environment.",
+    "N33 Studio develops custom systems that bring important workflows, information and teams into a clearer digital environment.",
   ],
   listTitle: "What We Develop",
   capabilities: [
@@ -218,7 +301,7 @@ export const ecommercePage = {
   title: "E-commerce Designed for the Full Buying Journey.",
   introduction: [
     "A successful online store needs more than a product grid and a checkout button.",
-    "N33 designs e-commerce experiences that connect product discovery, purchasing, payments, customer accounts and internal operations.",
+    "N33 Studio designs e-commerce experiences that connect product discovery, purchasing, payments, customer accounts and internal operations.",
   ],
   listTitle: "E-commerce Capabilities",
   capabilities: [
@@ -249,7 +332,7 @@ export const digitalMarketingPage = {
   title: "Digital Marketing With a Clearer Purpose.",
   introduction: [
     "Good digital marketing begins with a specific audience, a useful message and a clear action.",
-    "N33 connects campaign planning, content, landing pages, search visibility and measurement into one practical approach.",
+    "N33 Studio connects campaign planning, content, landing pages, search visibility and measurement into one practical approach.",
   ],
   listTitle: "Our Capabilities",
   capabilities: [
@@ -279,7 +362,7 @@ export const workPage = {
   title: "Selected Work.",
   introduction: [
     "A selection of websites, platforms and digital experiences created to solve specific business needs.",
-    "Real project information will be added as case studies become available.",
+    "Explore our featured client case studies and digital transformation solutions.",
   ],
   categories: [
     "All Work",
@@ -290,34 +373,15 @@ export const workPage = {
   ],
   emptyTitle: "More Work Is Being Prepared.",
   emptyDescription:
-    "New case studies are being documented. Contact N33 to discuss relevant project experience directly.",
-  emptyLabel: "Contact N33",
-} as const;
-
-export const caseStudyTemplate = {
-  projectName: "[Project name]",
-  client: "[Client name or confidential project description]",
-  industry: "[Industry]",
-  services: "[Services provided]",
-  introduction: "[A concise description of the project and its purpose.]",
-  challenge: "[The business or user problem that needed to be addressed.]",
-  approach: "[How N33 structured, designed and developed the solution.]",
-  solution: "[What was delivered.]",
-  outcome:
-    "[Only include verified outcomes provided by the client or project team.]",
-  cta: {
-    title: "Have a Similar Project?",
-    description: "Tell us what you are trying to improve or build.",
-    label: "Start a Project",
-    href: "/contact",
-  },
+    "New case studies are being documented. Contact N33 Studio to discuss relevant project experience directly.",
+  emptyLabel: "Contact N33 Studio",
 } as const;
 
 export const processPage = {
   title: "A Clear Process, Without the Theatre.",
   introduction: [
     "Good digital work needs structure, but it should not feel complicated.",
-    "N33 keeps the process focused, collaborative and visible from the first conversation to launch.",
+    "N33 Studio keeps the process focused, collaborative and visible from the first conversation to launch.",
   ],
   steps: [
     {
@@ -358,13 +422,13 @@ export const processPage = {
 export const aboutPage = {
   title: "Built for Businesses That Need Digital Work to Do More.",
   introduction: [
-    "N33 is a digital agency that brings strategy, design and development together to create useful digital experiences.",
+    "N33 Studio is a digital agency that brings strategy, design and development together to create useful digital experiences.",
     "We work on websites, custom software, e-commerce platforms and digital initiatives for businesses that need thoughtful execution rather than a one-size-fits-all solution.",
   ],
   philosophyTitle: "Design Is Only Useful When It Solves Something.",
   philosophy:
     "We care about visual quality, but every design decision must support the message, user journey or task. The goal is not decoration. The goal is a clearer and more effective digital experience.",
-  disciplinesTitle: "What N33 Brings Together",
+  disciplinesTitle: "What N33 Studio Brings Together",
   disciplines: [
     {
       title: "Strategy",
@@ -389,13 +453,13 @@ export const aboutPage = {
   ],
   collaborationTitle: "Direct Collaboration.",
   collaboration:
-    "Projects work better when communication is clear. N33 keeps clients close to the important decisions without filling the process with unnecessary meetings or presentation layers.",
+    "Projects work better when communication is clear. N33 Studio keeps clients close to the important decisions without filling the process with unnecessary meetings or presentation layers.",
   fitTitle: "Built to Fit the Business.",
   fit: "We do not force every project into the same package or technology. The solution should match the actual business requirement, available resources and future plans.",
   cta: {
     title: "Looking for a Digital Partner?",
     description: "Tell us what you need to improve, replace or create.",
-    label: "Contact N33",
+    label: "Contact N33 Studio",
     href: "/contact",
   },
 } as const;
@@ -438,7 +502,7 @@ export const contactPage = {
   success: {
     title: "Enquiry Received.",
     description:
-      "Thank you for contacting N33. We will review the details and reply using the email address you provided.",
+      "Thank you for contacting N33 Studio. We will review the details and reply using the email address you provided.",
     label: "Return to Home",
   },
   error: {
@@ -448,16 +512,39 @@ export const contactPage = {
     label: "Try Again",
   },
   details: {
-    email: "[YOUR EMAIL ADDRESS]",
-    phone: "[YOUR PHONE NUMBER]",
-    location: "[YOUR LOCATION]",
+    email: "hello@n33studio.com",
+    phone: "+60 11-6238 9981",
+    location: "Kuala Lumpur, Malaysia",
+    hours: "Monday–Friday, 9:00 AM – 6:00 PM (GMT+8)",
     availability: "Project enquiries and partnership discussions are welcome.",
   },
 } as const;
 
+export const privacyPolicy = {
+  title: "Privacy Policy",
+  lastUpdated: "July 2026",
+  content: [
+    "At N33 Studio, we respect your privacy. Information submitted through our website is used solely for communication and project-related purposes. We never sell personal information. Anonymous analytics may be collected to improve our website.",
+    "Information collected may include your name, email address, company, project details, and uploaded files.",
+    "For questions regarding our privacy practices or your data, please contact hello@n33studio.com.",
+  ],
+} as const;
+
+export const termsOfUse = {
+  title: "Terms of Use",
+  lastUpdated: "July 2026",
+  content: [
+    "By using this website, you agree to use it only for lawful purposes. All website content, including code, graphics, branding, and designs, remains the intellectual property of N33 Studio unless otherwise stated.",
+    "No content may be copied or redistributed without written permission. We reserve the right to update these terms at any time.",
+  ],
+} as const;
+
 export const footerContent = {
   description:
-    "N33 designs and develops websites, software and digital experiences for businesses that need clearer and more useful digital products.",
-  legal: ["Privacy Policy", "Terms of Use"],
-  copyright: "© N33. All rights reserved.",
+    "N33 Studio designs and develops websites, software and digital experiences for businesses that need clearer and more useful digital products.",
+  legalLinks: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Use" },
+  ],
+  copyright: "© N33 Studio. All rights reserved.",
 } as const;

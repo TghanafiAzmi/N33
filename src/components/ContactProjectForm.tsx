@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import {
   ChangeEvent,
   FormEvent,
@@ -13,6 +13,8 @@ import { contactPage } from "@/content/site-content";
 const maximumAttachmentSize = 10 * 1024 * 1024;
 
 export default function ContactProjectForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [hasSubmissionError, setHasSubmissionError] = useState(false);
   const errorRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -34,15 +36,56 @@ export default function ContactProjectForm() {
     );
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setHasSubmissionError(true);
+    setIsSubmitting(true);
+    setHasSubmissionError(false);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+      } else {
+        setHasSubmissionError(true);
+      }
+    } catch {
+      setHasSubmissionError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleTryAgain = () => {
     setHasSubmissionError(false);
     requestAnimationFrame(() => nameRef.current?.focus());
   };
+
+  if (isSuccess) {
+    return (
+      <div className="project-form project-form--success page-reveal">
+        <div className="project-form__success-icon">
+          <CheckCircle2 size={48} strokeWidth={1.25} />
+        </div>
+        <h3>{contactPage.success.title}</h3>
+        <p>{contactPage.success.description}</p>
+        <button
+          type="button"
+          onClick={() => {
+            setIsSuccess(false);
+            setHasSubmissionError(false);
+          }}
+          className="project-form__reset-btn"
+        >
+          Send Another Enquiry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="project-form">
@@ -177,14 +220,14 @@ export default function ContactProjectForm() {
             required
           />
           <label htmlFor="contact-consent">
-            I agree that N33 may use the information provided to respond to
+            I agree that N33 Studio may use the information provided to respond to
             this enquiry.
           </label>
         </div>
 
         <div className="project-form__submit project-form__field--wide">
-          <button type="submit">
-            <span>Send Project Enquiry</span>
+          <button type="submit" disabled={isSubmitting}>
+            <span>{isSubmitting ? "Sending..." : "Send Project Enquiry"}</span>
             <ArrowUpRight aria-hidden="true" size={20} strokeWidth={1.35} />
           </button>
           <p>{contactPage.supportingMessage}</p>

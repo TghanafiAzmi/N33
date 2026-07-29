@@ -10,6 +10,8 @@ const displayFont = Google_Sans_Flex({
   variable: "--font-display",
   subsets: ["latin"],
   weight: "variable",
+  adjustFontFallback: false,
+  fallback: ["system-ui", "sans-serif"],
 });
 
 const bodyFont = Outfit({
@@ -26,11 +28,19 @@ const monoFont = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "N33 | Digital Agency",
-    template: "%s | N33",
+    default: "N33 Studio | Digital Agency",
+    template: "%s | N33 Studio",
   },
   description:
-    "N33 designs and builds websites, digital products, custom systems and e-commerce experiences.",
+    "N33 Studio designs and builds websites, digital products, custom systems and e-commerce experiences.",
+  openGraph: {
+    title: "N33 Studio | Digital Agency",
+    description: "Design. Build. Launch. We Build Digital Presence.",
+    url: "https://n33studio.com",
+    siteName: "N33 Studio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

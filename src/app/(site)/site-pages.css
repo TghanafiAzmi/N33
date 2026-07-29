@@ -2046,3 +2046,133 @@
     line-height: 0.88;
   }
 }
+
+/* Work grid & cards */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 2rem;
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px dashed var(--border-dashed);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.015);
+  transition: border-color 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.work-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-0.25rem);
+}
+
+.work-card__media {
+  min-height: 18rem;
+  width: 100%;
+}
+
+.work-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.work-card__number {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+}
+
+.work-card__title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 400;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.work-card__client {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.work-card__summary {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.25rem 0;
+}
+
+.work-card__services {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.675rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px dashed var(--border-dashed);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Legal pages & form success */
+.legal-page-content {
+  padding-block: var(--section-space);
+  border-top: 1px dashed var(--border-dashed);
+}
+
+.legal-article {
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.project-form--success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 3rem;
+  border: 1px dashed var(--border-dashed);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.project-form__success-icon {
+  color: #ffffff;
+}
+
+.project-form__reset-btn {
+  margin-top: 1rem;
+  padding: 0.85rem 1.75rem;
+  background: #ffffff;
+  color: #09090b;
+  border: none;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.project-form__reset-btn:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

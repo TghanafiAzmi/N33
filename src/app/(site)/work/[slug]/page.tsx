@@ -3,72 +3,63 @@ import { notFound } from "next/navigation";
 import CallToAction from "@/components/CallToAction";
 import EditorialMedia from "@/components/EditorialMedia";
 import PageMasthead from "@/components/PageMasthead";
-import { caseStudyTemplate } from "@/content/site-content";
+import { projects } from "@/content/site-content";
 
 type WorkDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export const metadata: Metadata = {
-  robots: {
-    follow: false,
-    index: false,
-  },
-};
-
 export function generateStaticParams() {
-  return [{ slug: "placeholder" }];
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: WorkDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return { title: "Project Not Found | N33 Studio" };
+  }
+
+  return {
+    title: `${project.name} | N33 Studio Work`,
+    description: project.summary,
+  };
 }
 
 export default async function WorkDetailPage({
   params,
 }: WorkDetailPageProps) {
   const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
 
-  if (slug !== "placeholder") {
+  if (!project) {
     notFound();
   }
 
   const projectDetails = [
     {
-      label: "Client or project type",
-      value: caseStudyTemplate.client,
+      label: "Client",
+      value: project.client,
     },
     {
       label: "Industry",
-      value: caseStudyTemplate.industry,
+      value: project.industry,
     },
     {
       label: "Services",
-      value: caseStudyTemplate.services,
-    },
-  ];
-
-  const projectSections = [
-    {
-      title: "Challenge",
-      content: caseStudyTemplate.challenge,
-    },
-    {
-      title: "Approach",
-      content: caseStudyTemplate.approach,
-    },
-    {
-      title: "Solution",
-      content: caseStudyTemplate.solution,
-    },
-    {
-      title: "Outcome",
-      content: caseStudyTemplate.outcome,
+      value: project.services,
     },
   ];
 
   return (
     <>
       <PageMasthead
-        image="/images/abstract/cosmic-horizon.jpg"
-        introduction={[caseStudyTemplate.introduction]}
-        title={caseStudyTemplate.projectName}
+        image={project.image}
+        introduction={[project.summary]}
+        title={project.name}
         variant="wide"
       />
 
@@ -84,26 +75,38 @@ export default async function WorkDetailPage({
         <EditorialMedia
           className="case-study-page-summary__media"
           sizes="(max-width: 900px) 100vw, 58vw"
-          src="/images/abstract/network-wires.jpg"
+          src={project.image}
         />
       </section>
 
       <section className="case-study-page-story page-gutter">
-        {projectSections.map((section) => (
-          <article className="case-study-page-story__chapter page-reveal" key={section.title}>
-            <h2>{section.title}</h2>
-            <p>{section.content}</p>
-          </article>
-        ))}
+        <article className="case-study-page-story__chapter page-reveal">
+          <h2>The Challenge</h2>
+          <p>{project.challenge}</p>
+        </article>
+
+        <article className="case-study-page-story__chapter page-reveal">
+          <h2>Our Solution</h2>
+          <p>{project.solution}</p>
+        </article>
+
+        <article className="case-study-page-story__chapter page-reveal">
+          <h2>Key Outcomes</h2>
+          <ul>
+            {project.outcomes.map((outcome) => (
+              <li key={outcome}>{outcome}</li>
+            ))}
+          </ul>
+        </article>
       </section>
 
       <CallToAction
-        description={caseStudyTemplate.cta.description}
+        description="Tell us what you are trying to improve or build for your organization."
         primary={{
-          href: caseStudyTemplate.cta.href,
-          label: caseStudyTemplate.cta.label,
+          href: "/contact",
+          label: "Start a Similar Project",
         }}
-        title={caseStudyTemplate.cta.title}
+        title="Have a Similar Challenge?"
       />
     </>
   );
