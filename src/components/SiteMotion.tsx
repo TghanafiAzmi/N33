@@ -37,7 +37,6 @@ export default function SiteMotion() {
               ".process-step",
               ".process-step__line",
               ".about-word",
-              ".capability-item",
               ".enquiry-field",
               ".enquiry-form__action",
               ".site-footer__brand",
@@ -197,19 +196,6 @@ export default function SiteMotion() {
           gsap.set(".about-word", { opacity: 1 });
         }
 
-        gsap.from(".capability-item", {
-          autoAlpha: 0,
-          y: 55,
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: ".capability-list",
-            start: "top 78%",
-            once: true,
-          },
-        });
-
         gsap.from([".enquiry-field", ".enquiry-form__action"], {
           autoAlpha: 0,
           y: 36,
@@ -248,18 +234,18 @@ export default function SiteMotion() {
         });
 
         if (desktop) {
+          const section = document.querySelector<HTMLElement>("#work");
           const track = document.querySelector<HTMLElement>(".work-track");
-          const pin = document.querySelector<HTMLElement>(".work-pin");
 
-          if (track && pin) {
+          if (section && track) {
             const distance = () =>
-              Math.max(0, track.scrollWidth - window.innerWidth);
+              Math.max(0, track.scrollWidth - window.innerWidth + 120);
 
             gsap.to(track, {
               x: () => -distance(),
               ease: "none",
               scrollTrigger: {
-                trigger: pin,
+                trigger: section,
                 start: "top top",
                 end: () => `+=${distance()}`,
                 scrub: 0.8,
@@ -270,13 +256,13 @@ export default function SiteMotion() {
             });
 
             gsap.from(".project-card", {
-              scale: 0.92,
-              autoAlpha: 0.55,
+              scale: 0.94,
+              autoAlpha: 0.6,
               duration: 1,
               ease: "power3.out",
-              stagger: 0.1,
+              stagger: 0.08,
               scrollTrigger: {
-                trigger: pin,
+                trigger: section,
                 start: "top 76%",
                 once: true,
               },

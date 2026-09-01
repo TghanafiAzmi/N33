@@ -43,7 +43,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(3.35rem, 8.55vw, 8.8rem);
   font-weight: 400;
-  line-height: 0.88;
+  line-height: normal;
   letter-spacing: -0.065em;
 }
 
@@ -61,7 +61,7 @@
   margin: 0;
   color: rgb(255 255 255 / 66%);
   font-size: clamp(1rem, 1.25vw, 1.22rem);
-  line-height: 1.62;
+  line-height: normal;
 }
 
 .page-masthead__media {
@@ -151,7 +151,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2.55rem, 5.15vw, 5.25rem);
   font-weight: 400;
-  line-height: 0.93;
+  line-height: normal;
   letter-spacing: -0.055em;
 }
 
@@ -164,7 +164,7 @@
   margin: 0;
   color: rgb(255 255 255 / 67%);
   font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  line-height: 1.68;
+  line-height: normal;
 }
 
 .editorial-list {
@@ -185,7 +185,7 @@
   border-bottom: 1px dashed var(--border-dashed);
   color: rgb(255 255 255 / 82%);
   font-size: clamp(1.15rem, 1.8vw, 1.75rem);
-  line-height: 1.2;
+  line-height: normal;
 }
 
 .editorial-list li > span:first-child {
@@ -274,7 +274,7 @@
 .page-cta h2 {
   max-width: 9.5ch;
   font-size: clamp(3rem, 6.05vw, 7.05rem);
-  line-height: 0.88;
+  line-height: normal;
 }
 
 .page-cta__copy p {
@@ -282,7 +282,7 @@
   margin: clamp(2rem, 4vw, 3.75rem) 0 0;
   color: rgb(9 9 11 / 65%);
   font-size: clamp(1rem, 1.35vw, 1.25rem);
-  line-height: 1.62;
+  line-height: normal;
 }
 
 .page-cta--dark .page-cta__copy p {
@@ -334,7 +334,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(7rem, 19vw, 20rem);
   font-weight: 400;
-  line-height: 0.65;
+  line-height: normal;
   letter-spacing: -0.085em;
 }
 
@@ -344,7 +344,7 @@
   margin: 0;
   color: rgb(255 255 255 / 60%);
   font-size: clamp(1rem, 1.25vw, 1.18rem);
-  line-height: 1.6;
+  line-height: normal;
 }
 
 .route-footer__grid {
@@ -386,7 +386,7 @@
   border-bottom: 1px solid rgb(255 255 255 / 11%);
   color: rgb(255 255 255 / 76%);
   font-size: clamp(1.08rem, 1.3vw, 1.32rem);
-  line-height: 1.35;
+  line-height: normal;
   transition:
     color 300ms ease,
     border-color 300ms ease;
@@ -410,7 +410,7 @@
   margin: 0;
   color: rgb(255 255 255 / 72%);
   font-size: clamp(1.02rem, 1.15vw, 1.2rem);
-  line-height: 1.42;
+  line-height: normal;
 }
 
 .route-footer__details p span {
@@ -548,7 +548,7 @@
   .page-masthead h1 {
     max-width: 100%;
     font-size: clamp(2.35rem, 9.8vw, 2.75rem);
-    line-height: 0.9;
+    line-height: normal;
   }
 
   .page-masthead__intro {
@@ -694,7 +694,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2.7rem, 4.5vw, 5rem);
   font-weight: 400;
-  line-height: 0.92;
+  line-height: normal;
   letter-spacing: -0.055em;
 }
 
@@ -718,7 +718,7 @@
   margin: 0;
   color: rgb(255 255 255 / 65%);
   font-size: clamp(1rem, 1.2vw, 1.18rem);
-  line-height: 1.62;
+  line-height: normal;
 }
 
 .services-directory__details ul {
@@ -730,7 +730,7 @@
   color: rgb(255 255 255 / 48%);
   font-family: var(--font-mono), monospace;
   font-size: 0.57rem;
-  line-height: 1.45;
+  line-height: normal;
   letter-spacing: 0.06em;
   list-style: none;
 }
@@ -800,7 +800,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2.65rem, 4.8vw, 5.15rem);
   font-weight: 400;
-  line-height: 0.92;
+  line-height: normal;
   letter-spacing: -0.055em;
 }
 
@@ -842,7 +842,7 @@
   margin: 0;
   color: rgb(255 255 255 / 80%);
   font-size: clamp(1.15rem, 1.7vw, 1.65rem);
-  line-height: 1.25;
+  line-height: normal;
 }
 
 .web-service-statement {
@@ -878,7 +878,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2.65rem, 4.9vw, 5.3rem);
   font-weight: 400;
-  line-height: 0.92;
+  line-height: normal;
   letter-spacing: -0.055em;
 }
 
@@ -891,7 +891,7 @@
 .contact-page-details__heading > p {
   margin: clamp(2rem, 4vw, 3.6rem) 0 0;
   font-size: clamp(1.05rem, 1.45vw, 1.3rem);
-  line-height: 1.67;
+  line-height: normal;
 }
 
 .web-service-statement__copy p,
@@ -1220,7 +1220,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(3.5rem, 6vw, 6.5rem);
   font-weight: 400;
-  line-height: 0.82;
+  line-height: normal;
   letter-spacing: -0.07em;
 }
 
@@ -1229,7 +1229,7 @@
   margin: clamp(2rem, 4vw, 3.5rem) 0 0;
   color: rgb(255 255 255 / 64%);
   font-size: clamp(1.05rem, 1.45vw, 1.32rem);
-  line-height: 1.65;
+  line-height: normal;
 }
 
 .process-journey__media {
@@ -1299,7 +1299,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.7rem, 2.7vw, 2.8rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: -0.04em;
 }
 
@@ -1308,7 +1308,7 @@
   margin: 0;
   color: rgb(9 9 11 / 62%);
   font-size: 1rem;
-  line-height: 1.58;
+  line-height: normal;
 }
 
 .about-page-principles {
@@ -1378,7 +1378,7 @@
   color: rgb(9 9 11 / 58%);
   font-family: var(--font-mono), monospace;
   font-size: 0.58rem;
-  line-height: 1.45;
+  line-height: normal;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1397,7 +1397,7 @@
   color: var(--text-inverse);
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.15rem, 1.6vw, 1.55rem);
-  line-height: 1.3;
+  line-height: normal;
   transition: border-color 300ms ease;
 }
 
@@ -1457,7 +1457,7 @@
   max-width: 39rem;
   color: rgb(9 9 11 / 66%);
   font-size: 0.92rem;
-  line-height: 1.5;
+  line-height: normal;
 }
 
 .project-form__submit {
@@ -1498,7 +1498,7 @@
   margin: 0;
   color: rgb(9 9 11 / 60%);
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: normal;
 }
 
 .project-form__error {
@@ -1512,7 +1512,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: -0.04em;
 }
 
@@ -1520,7 +1520,7 @@
   max-width: 36rem;
   margin: 1.2rem 0;
   color: rgb(9 9 11 / 66%);
-  line-height: 1.55;
+  line-height: normal;
 }
 
 .project-form__error button {
@@ -1939,7 +1939,7 @@
   margin: 0;
   color: rgb(255 255 255 / 78%);
   font-size: clamp(1.1rem, 1.55vw, 1.45rem);
-  line-height: 1.45;
+  line-height: normal;
 }
 
 .case-study-page-summary__media {
@@ -1972,7 +1972,7 @@
   font-family: var(--font-display), sans-serif;
   font-size: clamp(3rem, 5.8vw, 6.2rem);
   font-weight: 400;
-  line-height: 0.88;
+  line-height: normal;
   letter-spacing: -0.06em;
 }
 
@@ -1983,7 +1983,7 @@
   margin: 0;
   color: rgb(9 9 11 / 62%);
   font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  line-height: 1.65;
+  line-height: normal;
 }
 
 @media (max-width: 900px) {
@@ -2030,20 +2030,20 @@
 }
 
 .route-shell h1 {
-  line-height: var(--heading-line-height-display);
+  line-height: normal;
 }
 
 .route-shell h2 {
-  line-height: var(--heading-line-height-section);
+  line-height: normal;
 }
 
 .route-shell h3 {
-  line-height: var(--heading-line-height-item);
+  line-height: normal;
 }
 
 @media (max-width: 560px) {
   .route-shell h1 {
-    line-height: 0.88;
+    line-height: normal;
   }
 }
 
@@ -2107,7 +2107,7 @@
 
 .work-card__summary {
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: normal;
   color: rgba(255, 255, 255, 0.7);
   margin: 0.25rem 0;
 }
@@ -2134,7 +2134,7 @@
   flex-direction: column;
   gap: 1.5rem;
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-  line-height: 1.7;
+  line-height: normal;
   color: rgba(255, 255, 255, 0.8);
 }
 

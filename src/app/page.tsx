@@ -6,6 +6,7 @@ import ServiceIndex from "@/components/ServiceIndex";
 import SiteHeader from "@/components/SiteHeader";
 import SiteMotion from "@/components/SiteMotion";
 import WorkRail from "@/components/WorkRail";
+import TypewriterText from "@/components/TypewriterText";
 import {
   footerNavigationGroups,
   navigation,
@@ -33,15 +34,6 @@ const processSteps = [
     name: "Grow.",
     description: "Measure, improve and support what comes next.",
   },
-];
-
-const capabilities = [
-  "Company websites",
-  "Landing pages",
-  "E-commerce platforms",
-  "Internal systems",
-  "Digital products",
-  "Website redesigns",
 ];
 
 const aboutStatement =
@@ -132,26 +124,34 @@ export default function Home() {
           aria-labelledby="services-title"
         >
           <div className="section-intro reveal-block">
-            <p className="section-intro__context">Services</p>
-            <h2 id="services-title">
-              Strategy, design, development and growth.
-            </h2>
-            <p>
-              N33 connects strategy, design, development and marketing from the
-              first decision through launch and ongoing support.
-            </p>
+            <div className="section-intro__main">
+              <span className="section-intro__badge">Services</span>
+              <h2 id="services-title">
+                Strategy, design, development and growth.
+              </h2>
+            </div>
+            <div className="section-intro__desc">
+              <p>
+                N33 connects strategy, design, development and marketing from the
+                first decision through launch and ongoing support.
+              </p>
+            </div>
           </div>
           <ServiceIndex />
         </section>
 
         <section id="work" className="chapter work-section" aria-labelledby="work-title">
           <div className="section-intro section-intro--work page-gutter reveal-block">
-            <p className="section-intro__context">Selected work</p>
-            <h2 id="work-title">Built around real business needs.</h2>
-            <p>
-              Project information will appear here after N33 approves the
-              details.
-            </p>
+            <div className="section-intro__main">
+              <span className="section-intro__badge">Selected work</span>
+              <h2 id="work-title">Built around real business needs.</h2>
+            </div>
+            <div className="section-intro__desc">
+              <p>
+                Project information will appear here after N33 approves the
+                details.
+              </p>
+            </div>
           </div>
           <WorkRail />
         </section>
@@ -163,7 +163,7 @@ export default function Home() {
         >
           <div className="process-layout">
             <div className="process-heading reveal-block">
-              <p className="section-intro__context">Process</p>
+              <span className="section-intro__badge">Process</span>
               <h2 id="process-title">From first thought to what comes next.</h2>
               <p>
                 N33 carries the project direction through delivery and support.
@@ -191,7 +191,7 @@ export default function Home() {
         >
           <div className="about-layout">
             <div className="about-heading reveal-block">
-              <p className="section-intro__context">N33</p>
+              <span className="section-intro__badge">N33</span>
               <h2 id="studio-title">One digital partner across the work.</h2>
             </div>
             <p className="about-statement" aria-label={aboutStatement}>
@@ -205,53 +205,6 @@ export default function Home() {
                 </span>
               ))}
             </p>
-            <div className="about-detail reveal-block">
-              <p>
-                Some projects begin with a complete website. Others start with
-                an internal system, e-commerce platform, landing page, redesign
-                or long-term marketing support.
-              </p>
-              <ul aria-label="Clients N33 works with">
-                <li>Startups</li>
-                <li>SMEs</li>
-                <li>Established businesses</li>
-                <li>Brands</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="capabilities"
-          className="chapter capabilities-section"
-          aria-labelledby="capabilities-title"
-        >
-          <div className="section-intro page-gutter reveal-block">
-            <p className="section-intro__context">Capabilities</p>
-            <h2 id="capabilities-title">
-              N33 builds around your business.
-            </h2>
-            <p>
-              N33 shapes each solution around the business, the people using it
-              and the job it needs to do.
-            </p>
-          </div>
-
-          <div className="capability-marquee" aria-hidden="true">
-            <div className="capability-marquee__track">
-              <span>Strategy / Design / Development / Technology /</span>
-              <span>Strategy / Design / Development / Technology /</span>
-            </div>
-          </div>
-
-          <div className="capability-list page-gutter">
-            {capabilities.map((capability, index) => (
-              <div className="capability-item" key={capability}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{capability}</h3>
-                <span aria-hidden="true">N33</span>
-              </div>
-            ))}
           </div>
         </section>
 
@@ -276,7 +229,7 @@ export default function Home() {
         <footer className="site-footer page-gutter">
           <div className="site-footer__top">
             <a className="site-footer__brand" href="#home">
-              N33.
+              <TypewriterText text="N33 STUDIO." />
             </a>
             <a className="site-footer__back" href="#home">
               Back to top
@@ -285,40 +238,94 @@ export default function Home() {
           </div>
 
           <div className="site-footer__grid">
-            <div>
-              <p className="site-footer__label">Navigate</p>
-              <nav aria-label="Footer navigation">
-                {footerNavigationGroups[0].links.map((link) => (
-                  <Link href={link.href} key={link.href}>
-                    {link.label}
-                  </Link>
-                ))}
-                {footerNavigationGroups[2].links.map((link) => (
-                  <Link href={link.href} key={link.href}>
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
+            {/* Column 1: PAGES */}
+            <div className="site-footer__col">
+              <div className="site-footer__group">
+                <p className="site-footer__label">Pages</p>
+                <nav className="site-footer__nav" aria-label="Pages navigation">
+                  {footerNavigationGroups[0].links.map((link) => (
+                    <Link className="site-footer__link" href={link.href} key={link.href}>
+                      <span>{link.label}</span>
+                      <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
             </div>
-            <div>
-              <p className="site-footer__label">Core services</p>
-              <ul>
-                {serviceNavigation.map((service) => (
-                  <li key={service.href}>
-                    <Link href={service.href}>{service.label}</Link>
-                  </li>
-                ))}
-              </ul>
+
+            {/* Column 2: SERVICES */}
+            <div className="site-footer__col">
+              <div className="site-footer__group">
+                <p className="site-footer__label">Services</p>
+                <ul className="site-footer__list">
+                  {serviceNavigation.map((service) => (
+                    <li key={service.href}>
+                      <Link className="site-footer__link" href={service.href}>
+                        <span>{service.label}</span>
+                        <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <p className="site-footer__label">Contact</p>
-              <p>Contact details pending.</p>
-              <p>Social links pending.</p>
+
+            {/* Column 3: CONTACT */}
+            <div className="site-footer__col">
+              <div className="site-footer__group">
+                <p className="site-footer__label">Contact</p>
+                <nav className="site-footer__nav" aria-label="Contact options">
+                  <a className="site-footer__link" href="mailto:hello@n33studio.com">
+                    <span>hello@n33studio.com</span>
+                    <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <a className="site-footer__link" href="https://wa.me/601162389981" rel="noreferrer" target="_blank">
+                    <span>+60 11-6238 9981</span>
+                    <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </nav>
+              </div>
+            </div>
+
+            {/* Column 4: COMPANY POLICIES */}
+            <div className="site-footer__col">
+              <div className="site-footer__group">
+                <p className="site-footer__label">Company Policies</p>
+                <nav className="site-footer__nav" aria-label="Company policies">
+                  <Link className="site-footer__link" href="/privacy">
+                    <span>Privacy Policy</span>
+                    <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                  <Link className="site-footer__link" href="/terms">
+                    <span>Terms of Use</span>
+                    <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                </nav>
+              </div>
             </div>
           </div>
 
           <div className="site-footer__bottom">
             <span>© 2026 N33.</span>
+            <div className="site-footer__socials">
+              <a
+                className="site-footer__social-link"
+                href="https://threads.net/@n33studio"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Threads ↗
+              </a>
+              <span className="site-footer__social-divider">/</span>
+              <a
+                className="site-footer__social-link"
+                href="https://instagram.com/n33studio"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Instagram ↗
+              </a>
+            </div>
             <span>We Build Digital Presence.</span>
           </div>
         </footer>

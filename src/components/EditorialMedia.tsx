@@ -16,9 +16,12 @@ export default function EditorialMedia({
   src,
 }: EditorialMediaProps) {
   return (
-    <div className={`page-media ${className}`.trim()} aria-hidden="true">
+    <div
+      className={`page-media relative w-full h-full ${className}`.trim()}
+      aria-hidden="true"
+    >
       <Image
-        className={imageClassName}
+        className={`object-cover ${imageClassName}`.trim()}
         src={src}
         alt=""
         fill

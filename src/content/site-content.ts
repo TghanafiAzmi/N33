@@ -101,7 +101,7 @@ export const socialLinks = [
 export const navigation = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services", children: serviceNavigation },
-  { href: "/work", label: "Work", children: workNavigation },
+  { href: "/work", label: "Work" },
   { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
 ] as const;
