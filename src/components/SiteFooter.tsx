@@ -1,90 +1,115 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import BackToTop from "./BackToTop";
+import TypewriterText from "./TypewriterText";
 import {
-  contactPage,
   footerNavigationGroups,
-  footerContent,
-  socialLinks,
+  serviceNavigation,
 } from "@/content/site-content";
 
 export default function SiteFooter() {
   return (
-    <footer className="route-footer page-gutter">
-      <div className="route-footer__lead">
-        <Link className="route-footer__brand" href="/" aria-label="N33 Studio home">
-          N33 STUDIO.
+    <footer className="site-footer page-gutter">
+      <div className="site-footer__top">
+        <Link className="site-footer__brand" href="/" aria-label="N33 Studio home">
+          <TypewriterText text="N33 STUDIO." />
         </Link>
-        <p>{footerContent.description}</p>
+        <BackToTop />
       </div>
 
-      <div className="route-footer__grid">
-        <div className="route-footer__navigation">
-          {footerNavigationGroups.map((group) => (
-            <nav aria-label={`${group.label} navigation`} key={group.label}>
-              <p>{group.label}</p>
-              {group.links.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  {link.label}
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    size={15}
-                    strokeWidth={1.25}
-                  />
+      <div className="site-footer__grid">
+        {/* Column 1: PAGES */}
+        <div className="site-footer__col">
+          <div className="site-footer__group">
+            <p className="site-footer__label">Pages</p>
+            <nav className="site-footer__nav" aria-label="Pages navigation">
+              {footerNavigationGroups[0].links.map((link) => (
+                <Link className="site-footer__link" href={link.href} key={link.href}>
+                  <span>{link.label}</span>
+                  <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
                 </Link>
               ))}
             </nav>
-          ))}
+          </div>
+        </div>
 
-          <nav aria-label="Social navigation">
-            <p>Connect</p>
-            {socialLinks.map((link) => (
+        {/* Column 2: SERVICES */}
+        <div className="site-footer__col">
+          <div className="site-footer__group">
+            <p className="site-footer__label">Services</p>
+            <ul className="site-footer__list">
+              {serviceNavigation.map((service) => (
+                <li key={service.href}>
+                  <Link className="site-footer__link" href={service.href}>
+                    <span>{service.label}</span>
+                    <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Column 3: CONTACT */}
+        <div className="site-footer__col">
+          <div className="site-footer__group">
+            <p className="site-footer__label">Contact</p>
+            <nav className="site-footer__nav" aria-label="Contact options">
+              <a className="site-footer__link" href="mailto:hello@n33studio.com">
+                <span>hello@n33studio.com</span>
+                <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+              </a>
               <a
-                href={link.href}
-                key={link.label}
+                className="site-footer__link"
+                href="https://wa.me/601162389981"
                 rel="noreferrer"
                 target="_blank"
               >
-                {link.label}
-                <ArrowUpRight aria-hidden="true" size={15} strokeWidth={1.25} />
+                <span>+60 11-6238 9981</span>
+                <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
               </a>
-            ))}
-          </nav>
+            </nav>
+          </div>
         </div>
 
-        <div className="route-footer__details">
-          <p>
-            <span>Email:</span>
-            <a href={`mailto:${contactPage.details.email}`}>
-              {contactPage.details.email}
-            </a>
-          </p>
-          <p>
-            <span>Phone / WhatsApp:</span>
-            <a href={`tel:${contactPage.details.phone.replace(/[^+\d]/g, "")}`}>
-              {contactPage.details.phone}
-            </a>
-          </p>
-          <p>
-            <span>Location:</span>
-            {contactPage.details.location}
-          </p>
-          <p>
-            <span>Hours:</span>
-            {contactPage.details.hours}
-          </p>
-        </div>
-
-        <div className="route-footer__legal" aria-label="Legal">
-          {footerContent.legalLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
+        {/* Column 4: COMPANY POLICIES */}
+        <div className="site-footer__col">
+          <div className="site-footer__group">
+            <p className="site-footer__label">Company Policies</p>
+            <nav className="site-footer__nav" aria-label="Company policies">
+              <Link className="site-footer__link" href="/privacy">
+                <span>Privacy Policy</span>
+                <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+              </Link>
+              <Link className="site-footer__link" href="/terms">
+                <span>Terms of Use</span>
+                <span className="site-footer__link-arrow" aria-hidden="true">↗</span>
+              </Link>
+            </nav>
+          </div>
         </div>
       </div>
 
-      <div className="route-footer__bottom">
-        <span>{footerContent.copyright}</span>
+      <div className="site-footer__bottom">
+        <span>© 2026 N33.</span>
+        <div className="site-footer__socials">
+          <a
+            className="site-footer__social-link"
+            href="https://threads.net/@n33studio"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Threads ↗
+          </a>
+          <span className="site-footer__social-divider">/</span>
+          <a
+            className="site-footer__social-link"
+            href="https://instagram.com/n33studio"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Instagram ↗
+          </a>
+        </div>
         <span>We Build Digital Presence.</span>
       </div>
     </footer>

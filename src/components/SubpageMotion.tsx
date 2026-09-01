@@ -35,9 +35,9 @@ export default function SubpageMotion() {
                 ".page-masthead__media",
                 ".page-reveal",
                 ".page-media img",
-                ".route-footer__lead",
-                ".route-footer__grid",
-                ".route-footer__bottom",
+                ".site-footer__brand",
+                ".site-footer__grid",
+                ".site-footer__bottom",
               ],
               { clearProps: "all" }
             );
@@ -170,9 +170,9 @@ export default function SubpageMotion() {
 
           gsap.from(
             [
-              ".route-footer__lead",
-              ".route-footer__grid",
-              ".route-footer__bottom",
+              ".site-footer__brand",
+              ".site-footer__grid",
+              ".site-footer__bottom",
             ],
             {
               autoAlpha: 0,
@@ -181,7 +181,7 @@ export default function SubpageMotion() {
               stagger: 0.1,
               ease: "power3.out",
               scrollTrigger: {
-                trigger: ".route-footer",
+                trigger: ".site-footer",
                 start: "top 82%",
                 once: true,
               },
